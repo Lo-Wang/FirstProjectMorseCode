@@ -17,37 +17,65 @@ namespace MorseCode
             InitializeComponent();
         }
 
-        char[] characters = new char[] { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И',
-                                                        'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С',
-                                                        'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ы', 'Ь',
-                                                        'Э', 'Ю', 'Я', '1', '2', '3', '4', '5', '6', '7',
-                                                        '8', '9', '0' };
+        Dictionary<char, string> codeMorse = new Dictionary<char, string>()
+        {
+            ['А'] = "*-",
+            ['Б'] = "-***",
+            ['В'] = "*--",
+            ['Г'] = "--*",
+            ['Д'] = "-**",
+            ['Е'] = "*",
+            ['Ж'] = "***-",
+            ['З'] = "--**",
+            ['И'] = "**",
+            ['Й'] = "*---",
+            ['К'] = "-*-",
+            ['Л'] = "*-**",
+            ['М'] = "--",
+            ['Н'] = "-*",
+            ['О'] = "---",
+            ['П'] = "*--*",
+            ['Р'] = "*-*",
+            ['С'] = "***",
+            ['Т'] = "-",
+            ['У'] = "**-",
+            ['Ф'] = "**-*",
+            ['Х'] = "****",
+            ['Ц'] = "-*-*",
+            ['Ч'] = "---*",
+            ['Ш'] = "----",
+            ['Щ'] = "--*-",
+            ['Ы'] = "-*--",
+            ['Ь'] = "-**-",
+            ['Э'] = "**-**",
+            ['Ю'] = "**--",
+            ['Я'] = "*-*-",
+            ['1'] = "*----",
+            ['2'] = "**---",
+            ['3'] = "***--",
+            ['4'] = "****-",
+            ['5'] = "*****",
+            ['6'] = "-****",
+            ['7'] = "--***",
+            ['8'] = "---**",
+            ['9'] = "----*",
+            ['0'] = "-----",
 
-        string[] codeMorse = new string[] { "*–", "–***", "*––", "––*",
-                                                        "–**", "*", "***–", "––**",
-                                                        "**", "*–––", "–*–", "*–**",
-                                                        "––", "–*", "–––", "*––*",
-                                                        "*–*", "***", "–", "**–",
-                                                        "**–*", "****", "–*–*",
-                                                        "–––*", "––––", "−−*−",
-                                                        "−*−−", "−**−", "**−**",
-                                                        "**−−", "*−*−", "*−−−−",
-                                                        "**−−−", "***−−", "****−",
-                                                        "*****", "−****", "−−***",
-                                                        "−−−**", "−−−−*", "−−−−−" };
-
+        };
         private void button1_Click(object sender, EventArgs e)
         {
             string input = textBox1.Text;
             input = input.ToUpper();
+            char[] tempWord = input.ToCharArray();
             string output = "";
-            int index;
-            foreach (char c in input)
+            foreach (var c in tempWord)
             {
-                if (c != ' ')
+                foreach (var item in codeMorse)
                 {
-                    index = Array.IndexOf(characters, c);
-                    output += codeMorse[index] + " ";
+                    if (c == item.Key)
+                    {
+                        output += item.Value + " ";
+                    }
                 }
             }
             output = output.Remove(output.Length - 1);
@@ -56,17 +84,21 @@ namespace MorseCode
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string input = textBox3.Text;
-            string[] split = input.Split(' ');
-            string output = "";
-            int index;
-            foreach (string s in split)
+            string input1 = textBox3.Text;
+            string[] tempWord1 = input1.Split();
+            string output1 = "";
+            foreach (var s in tempWord1)
             {
-                index = Array.IndexOf(codeMorse, s);
-                output += characters[index] + " ";
+                foreach (var item1 in codeMorse)
+                {
+                    if (s == item1.Value)
+                    {
+                        output1 += item1.Key + " ";
+                    }
+                }
             }
-            output = output.Remove(output.Length - 1);
-            textBox4.Text = output;
+            output1 = output1.Remove(output1.Length - 1);
+            textBox4.Text = output1;
         }
 
     }
