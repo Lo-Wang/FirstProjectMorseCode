@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp111", "WinFormsApp111\WinFormsApp111.csproj", "{CB653E63-9398-4659-AB64-7E2B49BAAF7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp111", "WinFormsApp111\WinFormsApp111.csproj", "{CB653E63-9398-4659-AB64-7E2B49BAAF7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{A0183D23-533A-48A3-9502-CD1B1590775E}"
+	ProjectSection(SolutionItems) = preProject
+		WinFormsApp111\Program.cs = WinFormsApp111\Program.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
