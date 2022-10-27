@@ -60,6 +60,21 @@ namespace MorseCode
                 ['8'] = "---**",
                 ['9'] = "----*",
                 ['0'] = "-----",
+                ['&'] = "*−***",
+                ['$'] = "***−**−",
+                ['@'] = "*−−*−*",
+                ['/'] = "−**−*",
+                ['_'] = "**−−*−",
+                ['='] = "−***−",
+                ['+'] = "*−*−*",
+                ['—'] = "−****−",
+                [':'] = "−−−***",
+                [';'] = "−*−*−*",
+                ['"'] = "*−**−*",
+                ['?'] = "**−−**",
+                ['!'] = "−−**−−",
+                [','] = "*−*−*−",
+                ['.'] = "******",
 
             };
            
@@ -152,7 +167,7 @@ namespace MorseCode
 
         }
 
-        private void ResetButton(object sender, EventArgs e)
+        private void ResetAllButton(object sender, EventArgs e)
         {
             textBox1.Text = null;
             textBox2.Text = null;
@@ -160,9 +175,27 @@ namespace MorseCode
             textBox4.Text = null;
         }
 
+        private void ResetEncryptButton(object sender, System.EventArgs e)
+        {
+            textBox1.Text = null;
+            textBox2.Text = null;
+        }
 
-    internal static class Program
-    {
+        private void ResetDecryptButton(object sender, System.EventArgs e)
+        {
+            textBox3.Text = null;
+            textBox4.Text = null;
+        }
+
+        private void CopyToDecrypt(object sender, System.EventArgs e)
+        {
+            var temp = textBox2.Text;
+            textBox3.Text = temp;
+        }
+
+
+        internal static class Program
+      {
 
         [STAThread]
         static void Main()
@@ -172,6 +205,6 @@ namespace MorseCode
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
-    }
+      }
     }
 }
