@@ -93,7 +93,7 @@ namespace MorseCode
             }
 		чтобы не вписывать вручную, используем два массива для переноса в словарь
             */
-        private void Encrypt (object sender, EventArgs e)
+        private void EncryptButton (object sender, EventArgs e)
         {
             
                 try
@@ -123,7 +123,7 @@ namespace MorseCode
                 }
         }
 
-        private void Decrypt(object sender, EventArgs e)
+        private void DecryptButton (object sender, EventArgs e)
         {
 
                 try
@@ -151,7 +151,15 @@ namespace MorseCode
                 }
 
         }
-            
+
+        private void ResetButton(object sender, EventArgs e)
+        {
+            textBox1.Text = null;
+            textBox2.Text = null;
+            textBox3.Text = null;
+            textBox4.Text = null;
+        }
+
 
     internal static class Program
     {
