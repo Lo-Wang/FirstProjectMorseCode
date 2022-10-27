@@ -17,7 +17,7 @@ namespace MorseCode
             InitializeComponent();
         }
 
-            readonly Dictionary <char, string> codeMorse = new Dictionary<char, string>()
+            readonly Dictionary <char, string> codeMorseSymbol = new Dictionary<char, string>()
             {
                 ['А'] = "*-",
                 ['Б'] = "-***",
@@ -93,44 +93,63 @@ namespace MorseCode
             }
 		чтобы не вписывать вручную, используем два массива для переноса в словарь
             */
-        private void button1_Click(object sender, EventArgs e)
+        private void Encrypt (object sender, EventArgs e)
         {
-            string input = textBox1.Text;
-            input = input.ToUpper();
-            char[] tempWord = input.ToCharArray();
-            string output = "";
-            foreach (var c in tempWord)
-            {
-                foreach (var item in codeMorse)
+            
+                try
                 {
-                    if (c == item.Key)
+                    string input = textBox1.Text;
+                    input = input.ToUpper();
+                    char[] tempWord = input.ToCharArray();
+                    string output = "";
+                    foreach (var c in tempWord)
                     {
-                        output += item.Value + " ";
+                        foreach (var item in codeMorseSymbol)
+                        {
+                            if (c == item.Key)
+                            {
+                                output += item.Value + " ";
+                            }
+                        }
                     }
-                }
-            }
-            output = output.Remove(output.Length - 1);
-            textBox2.Text = output;
-        }
-           
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var input1 = textBox3.Text;
-            string[] tempWord1 = input1.Split();
-            string output1 = "";
-            foreach (var s in tempWord1)
-            {
-                foreach (var item1 in codeMorse)
-                {
-                    if (s == item1.Value)
-                    {
-                        output1 += item1.Key + " ";
-                    }
+                    output = output.Remove(output.Length - 1);
+                    textBox2.Text = output;
                 }
-            }
-            output1 = output1.Remove(output1.Length -1);
-            textBox4.Text = output1;
+
+                catch (Exception)
+                {
+                   MessageBox.Show("Азбука Морзе не поддерживает английский алфавит (пока что)");
+                }
+        }
+
+        private void Decrypt(object sender, EventArgs e)
+        {
+
+                try
+                {
+                   var input1 = textBox3.Text;
+                   string[] tempWord1 = input1.Split();
+                   string output1 = "";
+
+                    foreach (var s in tempWord1)
+                    {
+                        foreach (var item1 in codeMorseSymbol)
+                        {
+                            if (s == item1.Value)
+                            {
+                                output1 += item1.Key + " ";
+                            }
+                        }
+                    }
+                   output1 = output1.Remove(output1.Length - 1);
+                   textBox4.Text = output1;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Введите символы полученные после шифрования слова");
+                }
+
         }
             
 
